@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>property-compare — Dubai Property Comparison Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <div>
+      <h1>property<span class="accent">-compare</span></h1>
+      <p class="subtitle">Dubai property comparison — side-by-side analysis, yields, scores &amp; radar</p>
+    </div>
+    <div class="header-actions">
+      <button id="btn-add" class="btn btn-primary">+ Add property</button>
+      <button id="btn-export" class="btn">Export JSON</button>
+      <button id="btn-import" class="btn">Import JSON</button>
+      <button id="btn-reset" class="btn btn-danger">Reset</button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div id="winner-banner" class="winner-banner hidden"></div>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Properties</h2>
+      <span class="hint">Up to 4 — edit any field, everything saves automatically</span>
+    </div>
+    <div id="cards" class="cards"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Scoring weights</h2>
+      <span class="hint">Drag sliders — the score and winner update live. Total: <span id="weight-total">100</span>%</span>
+    </div>
+    <div id="weights" class="weights"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Comparison</h2>
+      <span class="hint">Gold = best value in that row</span>
+    </div>
+    <div class="table-wrap">
+      <table id="compare-table" class="compare-table"></table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Radar overlay</h2>
+      <span class="hint">Five axes, normalised 0–100 across the compared properties</span>
+    </div>
+    <div class="radar-wrap">
+      <canvas id="radar" width="640" height="480"></canvas>
+      <div id="radar-legend" class="radar-legend"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>Data persists in your browser (localStorage). Use Export JSON to back up or share a comparison.</p>
+</footer>
+
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
